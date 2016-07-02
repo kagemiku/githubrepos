@@ -7,6 +7,7 @@
 //
 
 #import "SearchViewController.h"
+#import "RepositorySearcher.h"
 
 @interface SearchViewController () <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, UISearchDisplayDelegate>
 {
@@ -24,6 +25,9 @@
     repositorySearchBar.delegate = self;
     resultTableView.dataSource   = self;
     resultTableView.delegate     = self;
+
+    RepositorySearcher *rs = [[RepositorySearcher alloc] init];
+    [rs searchWithString:nil];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -51,12 +55,15 @@
 }
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
+    NSLog(@"test changed");
 }
 
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
+    NSLog(@"cancel button tapped");
 }
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
+    NSLog(@"search button tapped");
 }
 
 @end

@@ -15,6 +15,7 @@
 		10CE5C521D27F8980006ACF3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10CE5C501D27F8980006ACF3 /* LaunchScreen.storyboard */; };
 		10CE5C5D1D27F8980006ACF3 /* githubreposTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 10CE5C5C1D27F8980006ACF3 /* githubreposTests.m */; };
 		10CE5C681D27F8990006ACF3 /* githubreposUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 10CE5C671D27F8990006ACF3 /* githubreposUITests.m */; };
+		10CE5C811D280EA70006ACF3 /* RepositorySearcher.mm in Sources */ = {isa = PBXBuildFile; fileRef = 10CE5C801D280EA70006ACF3 /* RepositorySearcher.mm */; };
 		747FAC9A2D6A144152F8940F /* libPods-githubreposUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 15D52BC70EC98AB5C45DF578 /* libPods-githubreposUITests.a */; };
 		A6090964D116860A09AFEFB4 /* libPods-githubreposTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D2A850FE466D111D342AE1C /* libPods-githubreposTests.a */; };
 		BA0631455974E08568241861 /* libPods-githubrepos.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A8F476AF4FC15EA973BE3FC /* libPods-githubrepos.a */; };
@@ -55,6 +56,8 @@
 		10CE5C631D27F8990006ACF3 /* githubreposUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = githubreposUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		10CE5C671D27F8990006ACF3 /* githubreposUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = githubreposUITests.m; sourceTree = "<group>"; };
 		10CE5C691D27F8990006ACF3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		10CE5C7F1D280EA70006ACF3 /* RepositorySearcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RepositorySearcher.h; sourceTree = "<group>"; };
+		10CE5C801D280EA70006ACF3 /* RepositorySearcher.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = RepositorySearcher.mm; sourceTree = "<group>"; };
 		15D52BC70EC98AB5C45DF578 /* libPods-githubreposUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-githubreposUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		546FBADE323AA3E05FA1442A /* Pods-githubreposTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-githubreposTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-githubreposTests/Pods-githubreposTests.release.xcconfig"; sourceTree = "<group>"; };
 		6EB564C2C864670F8EBC71B8 /* Pods-githubrepos.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-githubrepos.release.xcconfig"; path = "Pods/Target Support Files/Pods-githubrepos/Pods-githubrepos.release.xcconfig"; sourceTree = "<group>"; };
@@ -127,6 +130,8 @@
 				10CE5C501D27F8980006ACF3 /* LaunchScreen.storyboard */,
 				10CE5C531D27F8980006ACF3 /* Info.plist */,
 				10CE5C421D27F8980006ACF3 /* Supporting Files */,
+				10CE5C7F1D280EA70006ACF3 /* RepositorySearcher.h */,
+				10CE5C801D280EA70006ACF3 /* RepositorySearcher.mm */,
 			);
 			path = githubrepos;
 			sourceTree = "<group>";
@@ -441,6 +446,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				10CE5C811D280EA70006ACF3 /* RepositorySearcher.mm in Sources */,
 				10CE5C4A1D27F8980006ACF3 /* SearchViewController.mm in Sources */,
 				10CE5C471D27F8980006ACF3 /* AppDelegate.m in Sources */,
 				10CE5C441D27F8980006ACF3 /* main.m in Sources */,
