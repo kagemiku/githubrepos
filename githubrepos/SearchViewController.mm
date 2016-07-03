@@ -73,16 +73,26 @@
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [self.resultTableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
-    [searcher_ searchWithQueryString:searchText];
+    if ( [searchText isEqualToString:@""] ) {
+        [self clearResultDetailCells];
+    } else {
+        [searcher_ searchWithQueryString:searchText];
+    }
 }
 
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
-    repositoryItems_ = [NSArray array];
-    [self.resultTableView reloadData];
+    self.repositorySearchBar.text = @"";
+    [self clearResultDetailCells];
+    [self.repositorySearchBar resignFirstResponder];
 }
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
+    [self.repositorySearchBar resignFirstResponder];
 }
 
 - (void)updateRepositoryItems:(NSArray *)items {
@@ -91,5 +101,11 @@
         [self.resultTableView reloadData];
     });
 }
+
+- (void)clearResultDetailCells {
+    repositoryItems_ = [NSArray array];
+    [self.resultTableView reloadData];
+}
+
 
 @end
