@@ -22,9 +22,10 @@
 
 @interface SearchViewController () <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, UISearchDisplayDelegate>
 {
-    __weak IBOutlet UISearchBar *repositorySearchBar;
-    __weak IBOutlet UITableView *resultTableView;
 }
+
+@property (weak, nonatomic) IBOutlet UISearchBar *repositorySearchBar;
+@property (weak, nonatomic) IBOutlet UITableView *resultTableView;
 
 @end
 
@@ -33,9 +34,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    repositorySearchBar.delegate = self;
-    resultTableView.dataSource   = self;
-    resultTableView.delegate     = self;
+    self.repositorySearchBar.delegate = self;
+    self.resultTableView.dataSource   = self;
+    self.resultTableView.delegate     = self;
 
     RepositorySearcher *rs = [[RepositorySearcher alloc] init];
     [rs searchWithString:nil];
