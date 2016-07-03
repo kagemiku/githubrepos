@@ -9,18 +9,24 @@
 #import "SearchViewController.h"
 #import "RepositorySearcher.h"
 
+
 @interface RepositoryDetailCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UILabel *fullRepositoryNameLabel;
 
 @end
 
+
 @implementation RepositoryDetailCell
 
 @end
 
 
-@interface SearchViewController () <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, UISearchDisplayDelegate, RepositorySearcherDelegate>
+@interface SearchViewController () <UITableViewDataSource,
+                                    UITableViewDelegate,
+                                    UISearchBarDelegate,
+                                    UISearchDisplayDelegate,
+                                    RepositorySearcherDelegate>
 {
     RepositorySearcher *searcher_;
     NSArray *repositoryItems_;
@@ -37,20 +43,28 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    self.repositorySearchBar.delegate = self;
-    self.resultTableView.dataSource   = self;
-    self.resultTableView.delegate     = self;
-
     searcher_ = [[RepositorySearcher alloc] init];
     searcher_.delegate = self;
 
     repositoryItems_ = [NSArray array];
+
+    self.repositorySearchBar.delegate = self;
+    self.resultTableView.dataSource   = self;
+    self.resultTableView.delegate     = self;
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+- (void)clearResultDetailCells {
+    repositoryItems_ = [NSArray array];
+    [self.resultTableView reloadData];
+}
+
+
+#pragma mark - Table View Delegate
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
@@ -77,6 +91,8 @@
     [self.resultTableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
+#pragma mark - Search Bar Delegate
+
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
     if ( [searchText isEqualToString:@""] ) {
         [self clearResultDetailCells];
@@ -95,16 +111,13 @@
     [self.repositorySearchBar resignFirstResponder];
 }
 
+#pragma mark - Repository Searcher Delegate
+
 - (void)updateRepositoryItems:(NSArray *)items {
     dispatch_async(dispatch_get_main_queue(), ^{
         repositoryItems_ = items;
         [self.resultTableView reloadData];
     });
-}
-
-- (void)clearResultDetailCells {
-    repositoryItems_ = [NSArray array];
-    [self.resultTableView reloadData];
 }
 
 
