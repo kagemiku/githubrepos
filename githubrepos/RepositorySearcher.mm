@@ -9,6 +9,10 @@
 #import "RepositorySearcher.h"
 #import "AFNetworking.h"
 
+
+static NSString * const kAPIBaseURL = @"https://api.github.com/search/repositories";
+
+
 @interface RepositorySearcher ()
 
 @end
@@ -26,7 +30,7 @@
 
 - (void)searchWithQueryString:(NSString *)query {
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    [manager GET:@"https://api.github.com/search/repositories"
+    [manager GET:kAPIBaseURL
       parameters:@{@"q": query}
         progress:nil
          success:^(NSURLSessionTask *task, id responseObject) {
