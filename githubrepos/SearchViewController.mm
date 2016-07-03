@@ -20,14 +20,17 @@
 @end
 
 
-@interface SearchViewController () <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, UISearchDisplayDelegate>
+@interface SearchViewController () <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, UISearchDisplayDelegate, RepositorySearcherDelegate>
 {
+    RepositorySearcher *searcher_;
+    NSArray *repositoryItems_;
 }
 
 @property (weak, nonatomic) IBOutlet UISearchBar *repositorySearchBar;
 @property (weak, nonatomic) IBOutlet UITableView *resultTableView;
 
 @end
+
 
 @implementation SearchViewController
 
@@ -38,8 +41,10 @@
     self.resultTableView.dataSource   = self;
     self.resultTableView.delegate     = self;
 
-    RepositorySearcher *rs = [[RepositorySearcher alloc] init];
-    [rs searchWithString:nil];
+    searcher_ = [[RepositorySearcher alloc] init];
+    searcher_.delegate = self;
+
+    repositoryItems_ = [NSArray array];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -52,7 +57,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 1;
+    return repositoryItems_.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -63,21 +68,32 @@
         cell = [[RepositoryDetailCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
 
-    cell.fullRepositoryNameLabel.text = @"full_name";
+    cell.fullRepositoryNameLabel.text = repositoryItems_[indexPath.row][@"full_name"];
+    NSLog(@"text: %@", cell.fullRepositoryNameLabel.text);
 
     return cell;
 }
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
-    NSLog(@"test changed");
+    [searcher_ searchWithString:searchText];
 }
 
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
     NSLog(@"cancel button tapped");
+
+    repositoryItems_ = [NSArray array];
+    [self.resultTableView reloadData];
 }
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
     NSLog(@"search button tapped");
+}
+
+- (void)updateRepositoryItems:(NSArray *)items {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        repositoryItems_ = items;
+        [self.resultTableView reloadData];
+    });
 }
 
 @end

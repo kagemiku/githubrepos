@@ -27,13 +27,15 @@
 - (void)searchWithString:(NSString *)query {
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [manager GET:@"https://api.github.com/search/repositories"
-      parameters:@{@"q": @"tetris"}
+      parameters:@{@"q": query}
         progress:nil
          success:^(NSURLSessionTask *task, id responseObject) {
              NSLog(@"JSON: %@", responseObject);
 
              NSArray *formattedItems = [self composeArrayForReturnFromJSON:responseObject];
              NSLog(@"items: %@", formattedItems);
+
+             [self.delegate updateRepositoryItems:formattedItems];
          }
          failure:^(NSURLSessionTask *operation, NSError *error) {
              NSLog(@"Error: %@", error);

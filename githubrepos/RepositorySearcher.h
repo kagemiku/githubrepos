@@ -8,7 +8,20 @@
 
 #import <Foundation/Foundation.h>
 
+
+@class RepositorySearcher;
+
+@protocol RepositorySearcherDelegate <NSObject>
+
+@required
+- (void)updateRepositoryItems:(NSArray *)items;
+
+@end
+
+
 @interface RepositorySearcher : NSObject
+
+@property (nonatomic, weak) id<RepositorySearcherDelegate> delegate;
 
 - (id)init;
 - (void)searchWithString:(NSString *)query;
