@@ -34,8 +34,6 @@ static NSString * const kAPIBaseURL = @"https://api.github.com/search/repositori
       parameters:@{@"q": query}
         progress:nil
          success:^(NSURLSessionTask *task, id responseObject) {
-             NSLog(@"JSON: %@", responseObject);
-
              NSArray *formattedItems = [self composeArrayForReturnFromJSON:responseObject];
              NSLog(@"items: %@", formattedItems);
 

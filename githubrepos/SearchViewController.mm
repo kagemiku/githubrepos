@@ -69,7 +69,6 @@
     }
 
     cell.fullRepositoryNameLabel.text = repositoryItems_[indexPath.row][@"full_name"];
-    NSLog(@"text: %@", cell.fullRepositoryNameLabel.text);
 
     return cell;
 }
@@ -79,14 +78,11 @@
 }
 
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
-    NSLog(@"cancel button tapped");
-
     repositoryItems_ = [NSArray array];
     [self.resultTableView reloadData];
 }
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
-    NSLog(@"search button tapped");
 }
 
 - (void)updateRepositoryItems:(NSArray *)items {
