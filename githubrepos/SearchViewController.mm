@@ -75,7 +75,7 @@
 }
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
-    [searcher_ searchWithString:searchText];
+    [searcher_ searchWithQueryString:searchText];
 }
 
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {

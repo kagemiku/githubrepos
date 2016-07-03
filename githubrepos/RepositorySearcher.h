@@ -24,6 +24,6 @@
 @property (nonatomic, weak) id<RepositorySearcherDelegate> delegate;
 
 - (id)init;
-- (void)searchWithString:(NSString *)query;
+- (void)searchWithQueryString:(NSString *)query;
 
 @end

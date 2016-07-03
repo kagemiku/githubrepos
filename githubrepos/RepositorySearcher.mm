@@ -24,7 +24,7 @@
     return self;
 }
 
-- (void)searchWithString:(NSString *)query {
+- (void)searchWithQueryString:(NSString *)query {
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [manager GET:@"https://api.github.com/search/repositories"
       parameters:@{@"q": query}
