@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Search View Controller-->
@@ -29,13 +30,29 @@
                                     </connections>
                                 </searchBar>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="repositoryDetailCell" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="repositoryDetailCell" id="x4J-h7-IlD">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="repositoryDetailCell" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="repositoryDetailCell" id="x4J-h7-IlD" customClass="RepositoryDetailCell">
                                         <rect key="frame" x="0.0" y="72" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="x4J-h7-IlD" id="Jmc-tg-Xjw">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="685-cl-kzq">
+                                                    <rect key="frame" x="8" y="11" width="584" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="685-cl-kzq" firstAttribute="leading" secondItem="Jmc-tg-Xjw" secondAttribute="leadingMargin" id="9rO-fE-yzM"/>
+                                                <constraint firstItem="685-cl-kzq" firstAttribute="centerY" secondItem="Jmc-tg-Xjw" secondAttribute="centerY" id="Ade-dg-wSL"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="685-cl-kzq" secondAttribute="trailing" id="MWc-ex-hfq"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="fullRepositoryNameLabel" destination="685-cl-kzq" id="Khx-rO-WHn"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>

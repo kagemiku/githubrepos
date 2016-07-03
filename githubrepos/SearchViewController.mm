@@ -9,6 +9,17 @@
 #import "SearchViewController.h"
 #import "RepositorySearcher.h"
 
+@interface RepositoryDetailCell : UITableViewCell
+
+@property (weak, nonatomic) IBOutlet UILabel *fullRepositoryNameLabel;
+
+@end
+
+@implementation RepositoryDetailCell
+
+@end
+
+
 @interface SearchViewController () <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, UISearchDisplayDelegate>
 {
     __weak IBOutlet UISearchBar *repositorySearchBar;
@@ -46,10 +57,12 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *cellIdentifier = @"repositoryDetailCell";
 
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    RepositoryDetailCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if ( !cell ) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+        cell = [[RepositoryDetailCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
+
+    cell.fullRepositoryNameLabel.text = @"full_name";
 
     return cell;
 }
